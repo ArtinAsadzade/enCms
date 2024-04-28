@@ -8,6 +8,9 @@ import Mail from "./pages/Mail";
 import Page404 from "./pages/Page404";
 import PrivateRouts from "./pages/PrivateRouts";
 import Login from "./pages/Login";
+import Feedback from "./pages/Feedback";
+import Message from "./pages/Message";
+import Manage from "./pages/Manage";
 
 const routers = [
   { path: "/", element: <Login /> },
@@ -21,7 +24,11 @@ const routers = [
       { path: "products", element: <Products /> },
       { path: "transactions", element: <Transactions /> },
       { path: "reports", element: <Reports /> },
-      { path: "Mail", element: <Mail /> },
+      { path: "mail", element: <Mail /> },
+      { path: "feedback", element: <Feedback /> },
+      { path: "message", element: <Message /> },
+      { path: "manage", element: <Manage /> },
+      { path: "staffAnalytics", element: <Manage /> },
       { path: "*", element: <Page404 /> },
     ],
   },

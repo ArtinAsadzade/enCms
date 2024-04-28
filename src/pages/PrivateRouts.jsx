@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { userLogin } from "../Utils";
 import { Navigate, Outlet } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
@@ -13,7 +13,10 @@ export default function PrivateRouts() {
     <>
       {isLogin ? (
         <>
-          <TopBar /> <SideBar /> <Outlet />
+          <TopBar />{" "}
+          <div className="flex mt-2">
+            <SideBar /> <Outlet />
+          </div>
         </>
       ) : (
         <Navigate to={"/"} />
