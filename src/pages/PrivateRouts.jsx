@@ -3,6 +3,7 @@ import { userLogin } from "../Utils";
 import { Navigate, Outlet } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import TopBar from "../components/TopBar";
+import SideBar from "../components/SideBar";
 
 export default function PrivateRouts() {
   const { userName, userPassword } = useContext(UserContext);
@@ -12,7 +13,7 @@ export default function PrivateRouts() {
     <>
       {isLogin ? (
         <>
-          <TopBar /> <Outlet />
+          <TopBar /> <SideBar /> <Outlet />
         </>
       ) : (
         <Navigate to={"/"} />
