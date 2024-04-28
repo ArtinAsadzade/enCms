@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { userLogin } from "../Utils";
-import { userNameLogin, passwordLogin } from "./../data/UserLogin";
 import { Navigate, Outlet } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
+import TopBar from "../components/TopBar";
 
 export default function PrivateRouts() {
-  let isLogin = userLogin(userNameLogin, passwordLogin);
-  return <>{isLogin ? <Outlet /> : <Navigate to={"/"} />}</>;
+  const { userName, userPassword } = useContext(UserContext);
+
+  let isLogin = userLogin(userName, userPassword);
+  return (
+    <>
+      {isLogin ? (
+        <>
+          <TopBar /> <Outlet />
+        </>
+      ) : (
+        <Navigate to={"/"} />
+      )}
+    </>
+  );
 }

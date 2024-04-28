@@ -1,9 +1,13 @@
-import React from "react";
-import { useRoutes } from "react-router";
+import React, { useState, createContext } from "react";
+import { useRoutes } from "react-router-dom";
 import routers from "./routes";
-import TopBar from "./components/TopBar";
+import { UserContext } from "./context/UserContext";
 
 export default function App() {
   const router = useRoutes(routers);
-  return <>{router}</>;
+
+  const [userName, setUserName] = useState("");
+  const [userPassword, setUserPassword] = useState("");
+
+  return <UserContext.Provider value={{ userName, setUserName, userPassword, setUserPassword }}>{router}</UserContext.Provider>;
 }

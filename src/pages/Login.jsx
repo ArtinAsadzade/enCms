@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { userLogin } from "./../Utils";
 import { Link } from "react-router-dom";
-import { userNameLogin, passwordLogin } from "./../data/UserLogin";
+import { UserContext } from "../context/UserContext";
 
 export default function Login() {
-  const [userName, setUserName] = useState("");
-  const [userPassword, setUserPassword] = useState("");
+  const { userName, setUserName, userPassword, setUserPassword } = useContext(UserContext);
 
   const changeUserNameValue = (e) => {
     setUserName(e.target.value);
