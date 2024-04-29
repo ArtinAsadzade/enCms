@@ -1,11 +1,9 @@
 import { useContext } from "react";
-import {
-  BellAlertIcon,
-  GlobeAltIcon,
-  Cog6ToothIcon,
-} from "@heroicons/react/24/outline";
+import { BellAlertIcon, Cog6ToothIcon } from "@heroicons/react/24/outline";
 import Users from "../data/Users";
 import { UserContext } from "../context/UserContext";
+import { Messages } from "./../data/Messages";
+import MessagesComp from "./MessagesComp";
 
 export default function TopBar() {
   const { userName, userPassword } = useContext(UserContext);
@@ -13,6 +11,9 @@ export default function TopBar() {
     (user) =>
       userPassword === user.password &&
       (user.gmail === userName || user.userName === userName)
+  );
+  const findMessages = Messages.filter(
+    (message) => message.for.toLowerCase() === userFind.userName.toLowerCase()
   );
 
   return (
@@ -24,19 +25,18 @@ export default function TopBar() {
           </h1>
         </div>
         <div className="flex justify-evenly items-center">
-          <div className="relative">
+          <div className="relative group cursor-default">
             <div className="w-4 h-4 md:w-5 md:h-5 text-sm bg-red-600 rounded-full flex items-center justify-center text-white absolute -top-1">
-              3
+              {findMessages.length}
             </div>
-            <BellAlertIcon className="w-6 md:w-8 text-gray-600 mx-1" />
-          </div>
-          <div className="relative">
-            <div className="w-4 h-4 md:w-5 md:h-5 text-sm bg-red-600 rounded-full flex items-center justify-center text-white absolute -top-1">
-              3
+            <BellAlertIcon className="w-6 md:w-8 text-gray-600 mx-1 cursor-pointer" />
+            <div className="hidden w-96 group-hover:block hover:block transition-all absolute bg-white shadow-xl p-2 top-8 -left-64 rounded-lg">
+              {findMessages.map((item) => (
+                <MessagesComp key={item.id} {...item} />
+              ))}
             </div>
-            <GlobeAltIcon className="w-6 md:w-8 text-gray-600 mx-1" />
           </div>
-          <Cog6ToothIcon className="w-6 md:w-8 text-gray-600 mx-1" />
+          <Cog6ToothIcon className="w-6 md:w-8 text-gray-600 mx-1 cursor-pointer" />
 
           <img
             src={userFind.profile}
