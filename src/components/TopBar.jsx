@@ -30,7 +30,7 @@ export default function TopBar() {
               {findMessages.length}
             </div>
             <BellAlertIcon className="w-6 md:w-8 text-gray-600 mx-1 cursor-pointer" />
-            <div className="hidden w-96 group-hover:block hover:block transition-all absolute bg-white shadow-xl p-2 top-8 -left-64 rounded-lg">
+            <div className="hidden w-90 group-hover:block hover:block transition-all z-20 absolute bg-white shadow-xl p-2 top-6 -left-64 rounded-lg">
               {findMessages.map((item) => (
                 <MessagesComp key={item.id} {...item} />
               ))}
