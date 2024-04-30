@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { userLogin } from "./../Utils";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 
 export default function Login() {
