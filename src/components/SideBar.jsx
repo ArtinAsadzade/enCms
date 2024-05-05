@@ -11,7 +11,7 @@ export default function SideBar() {
             {links
               .filter((item) => item.category === "dashboard")
               .map((item) => (
-                <SideBarItems ket={item.id} {...item} />
+                <SideBarItems key={item.id} {...item} />
               ))}
           </div>
           <div className="w-full flex flex-col p-2">
@@ -19,7 +19,7 @@ export default function SideBar() {
             {links
               .filter((item) => item.category === "quickmenu")
               .map((item) => (
-                <SideBarItems ket={item.id} {...item} />
+                <SideBarItems key={item.id} {...item} />
               ))}
           </div>
           <div className="w-full flex flex-col p-2">
@@ -27,7 +27,7 @@ export default function SideBar() {
             {links
               .filter((item) => item.category === "notification")
               .map((item) => (
-                <SideBarItems ket={item.id} {...item} />
+                <SideBarItems key={item.id} {...item} />
               ))}
           </div>
           <div className="w-full flex flex-col p-2">
@@ -35,7 +35,7 @@ export default function SideBar() {
             {links
               .filter((item) => item.category === "staff")
               .map((item) => (
-                <SideBarItems ket={item.id} {...item} />
+                <SideBarItems key={item.id} {...item} />
               ))}
           </div>
         </div>
