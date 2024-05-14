@@ -7,8 +7,8 @@ import SideBar from "../components/SideBar";
 
 export default function PrivateRouts() {
   const { userName, userPassword } = useContext(UserContext);
+  const isLogin = userLogin(userName, userPassword);
 
-  let isLogin = userLogin(userName, userPassword);
   return (
     <>
       {isLogin ? (

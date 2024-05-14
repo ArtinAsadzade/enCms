@@ -1,17 +1,15 @@
-import { useContext, useEffect } from "react";
-import { userLogin } from "./../Utils";
-import { Link, Navigate } from "react-router-dom";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 
 export default function Login() {
   const { userName, setUserName, userPassword, setUserPassword } = useContext(UserContext);
-
-  let isLogin = userLogin(userName, userPassword);
+  const navigate = useNavigate();
 
   const submitHandler = () => {
-    if (!isLogin) {
-      alert("You do not have access");
-    }
+    localStorage.setItem("userName", userName);
+    localStorage.setItem("password", userPassword);
+    navigate("/home");
   };
   return (
     <>
@@ -21,7 +19,7 @@ export default function Login() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action="#" method="POST">
+          <form className="space-y-6">
             <div>
               <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                 Email Or UserName
@@ -60,13 +58,12 @@ export default function Login() {
             </div>
 
             <div>
-              <Link
+              <button
                 onClick={submitHandler}
-                to="/home"
                 className="flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:opacity-80 transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Sign in
-              </Link>
+              </button>
             </div>
           </form>
         </div>

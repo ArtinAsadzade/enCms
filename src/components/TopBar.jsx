@@ -1,28 +1,26 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { BellAlertIcon, Cog6ToothIcon } from "@heroicons/react/24/outline";
 import Users from "../data/Users";
 import { UserContext } from "../context/UserContext";
 import { Messages } from "./../data/Messages";
 import MessagesComp from "./MessagesComp";
+import UserControl from "./UserControl";
 
 export default function TopBar() {
   const { userName, userPassword } = useContext(UserContext);
-  let userFind = Users.find(
-    (user) =>
-      userPassword === user.password &&
-      (user.gmail === userName || user.userName === userName)
-  );
-  const findMessages = Messages.filter(
-    (message) => message.for.toLowerCase() === userFind.userName.toLowerCase()
-  );
+  const [showControl, setShowControl] = useState(false);
+  let userFind = Users.find((user) => userPassword === user.password && (user.gmail === userName || user.userName === userName));
+  const findMessages = Messages.filter((message) => message.for.toLowerCase() === userFind.userName.toLowerCase());
+
+  const userControlHandler = () => {
+    setShowControl((prevState) => (prevState = !prevState));
+  };
 
   return (
     <>
       <div className="flex justify-between p-3 items-center shadow-sm shadow-black">
         <div>
-          <h1 className="font-bold text-xl md:text-2xl text-gray-600">
-            articom.ir
-          </h1>
+          <h1 className="font-extrabold text-xl md:text-2xl text-gray-600">articom.ir</h1>
         </div>
         <div className="flex justify-evenly items-center">
           <div className="relative group cursor-default">
@@ -30,19 +28,22 @@ export default function TopBar() {
               {findMessages.length}
             </div>
             <BellAlertIcon className="w-6 md:w-8 text-gray-600 mx-1 cursor-pointer" />
-            <div className="hidden w-90 group-hover:block hover:block transition-all z-20 absolute bg-white shadow-xl p-2 top-6 -left-64 rounded-lg">
+            <div
+              className={`hidden w-90 group-hover:flex hover:flex w-52 flex-col justify-start transition-transform z-20 absolute bg-black top-12 right-0 rounded-lg text-white`}
+            >
               {findMessages.map((item) => (
                 <MessagesComp key={item.id} {...item} />
               ))}
             </div>
           </div>
           <Cog6ToothIcon className="w-6 md:w-8 text-gray-600 mx-1 cursor-pointer" />
-
           <img
             src={userFind.profile}
             alt="Profile Pic"
-            className="bg-black rounded-full w-8 md:w-10 mx-2"
+            className="bg-black rounded-full w-8 md:w-10 mx-2 cursor-pointer"
+            onClick={userControlHandler}
           />
+          <UserControl showControl={showControl} />
         </div>
       </div>
     </>

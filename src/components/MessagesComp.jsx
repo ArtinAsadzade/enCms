@@ -1,7 +1,7 @@
 export default function MessagesComps(props) {
   return (
     <>
-      <div className="flex flex-nowrap mb-4 p-3 rounded-lg shadow-md bg-white">
+      <div className="flex flex-nowrap  p-3 rounded-lg bg-black border-b">
         <h1 className="mx-3">
           <span className="font-bold">From:</span> {props.from}
         </h1>
