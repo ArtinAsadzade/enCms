@@ -4,7 +4,7 @@ const Users = [
     userName: "artin",
     password: "12345",
     gmail: "artin@gmail.com",
-    profile: "../../public/Profile/cute alien-amico.svg",
+    profile: "/Profile/cute alien-amico.svg",
     admin: true,
   },
   {
@@ -12,7 +12,7 @@ const Users = [
     userName: "amir",
     password: "12345",
     gmail: "amir@gmail.com",
-    profile: "../../public/Profile/github-250.png",
+    profile: "/Profile/github-250.png",
     admin: true,
   },
   {
@@ -20,7 +20,7 @@ const Users = [
     userName: "mamad",
     password: "12345",
     gmail: "mamad@gmail.com",
-    profile: "../../public/Profile/github-250.png",
+    profile: "",
     admin: false,
   },
   {
@@ -28,15 +28,15 @@ const Users = [
     userName: "asghar",
     password: "12345",
     gmail: "amir@gmail.com",
-    profile: "../../public/Profile/github-250.png",
-    admin: false,
+    profile: "",
+    admin: true,
   },
   {
     id: 5,
     userName: "ali",
     password: "12345",
     gmail: "ali@gmail.com",
-    profile: "../../public/Profile/github-250.png",
+    profile: "",
     admin: true,
   },
 ];
