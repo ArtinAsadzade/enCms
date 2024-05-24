@@ -8,7 +8,7 @@ export default function SideBarItems(props) {
         <Link
           key={item.id}
           to={item.link}
-          className="w-full hover:bg-slate-200 p-1 rounded-md flex items-center justify-start gap-2"
+          className={`w-full hover:bg-slate-200 p-1 rounded-md flex items-center justify-start gap-2`}
         >
           <span className="[&>*]:w-full [&>*]:h-full w-5 h-5">{item.icon}</span>
           <p>{item.name}</p>
