@@ -1,10 +1,23 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 
 export default function Login() {
-  const { userName, setUserName, userPassword, setUserPassword } = useContext(UserContext);
+  const { userName, setUserName, userPassword, setUserPassword } =
+    useContext(UserContext);
   const navigate = useNavigate();
+  useEffect(() => {
+    alert(
+      "You Can Use : \n  UserName: artin, Pass: 12345 \n UserName: amir, Pass: 12345 \n UserName: asghar Pass: 12345"
+    );
+  }, []);
+
+  const setUserNameHandler = (e) => {
+    setUserName(e.target.value);
+  };
+  const setPasswordHandler = (e) => {
+    setUserPassword(e.target.value);
+  };
 
   const submitHandler = () => {
     localStorage.setItem("userName", userName);
@@ -15,19 +28,24 @@ export default function Login() {
     <>
       <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to admin panel</h2>
+          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+            Sign in to admin panel
+          </h2>
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <form className="space-y-6">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
                 Email Or UserName
               </label>
               <div className="mt-2">
                 <input
                   value={userName}
-                  onChange={(e) => setUserName(e.target.value)}
+                  onChange={setUserNameHandler}
                   id="email"
                   name="email"
                   type="text"
@@ -39,14 +57,17 @@ export default function Login() {
 
             <div>
               <div className="flex items-center justify-between">
-                <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
                   Password
                 </label>
               </div>
               <div className="mt-2">
                 <input
                   value={userPassword}
-                  onChange={(e) => setUserPassword(e.target.value)}
+                  onChange={setPasswordHandler}
                   id="password"
                   name="password"
                   type="password"
