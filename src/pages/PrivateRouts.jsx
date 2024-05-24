@@ -14,7 +14,7 @@ export default function PrivateRouts() {
       {isLogin ? (
         <>
           <TopBar />{" "}
-          <div className="flex mt-2">
+          <div className="flex mt-[2px]">
             <SideBar /> <Outlet />
           </div>
         </>
