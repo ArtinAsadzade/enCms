@@ -38,7 +38,7 @@ export default function TopBar() {
           </div>
           <Cog6ToothIcon className="w-6 md:w-8 text-gray-600 mx-1 cursor-pointer" />
           <img
-            src={userFind.profile}
+            src={userFind.profile || "/public/Profile/Default.jpg"}
             alt="Profile Pic"
             className="bg-black rounded-full w-8 md:w-10 mx-2 cursor-pointer"
             onClick={userControlHandler}
