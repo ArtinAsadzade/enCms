@@ -1,16 +1,34 @@
 import { useContext, useState } from "react";
-import { BellAlertIcon, Cog6ToothIcon } from "@heroicons/react/24/outline";
+import {
+  Bars3Icon,
+  BellAlertIcon,
+  Cog6ToothIcon,
+} from "@heroicons/react/24/outline";
 import Users from "../data/Users";
 import { UserContext } from "../context/UserContext";
 import { Messages } from "./../data/Messages";
 import MessagesComp from "./MessagesComp";
 import UserControl from "./UserControl";
+import { ShowSideBarContext } from "./../context/ShowSideBarContext";
 
 export default function TopBar() {
-  const { userName, userPassword } = useContext(UserContext);
   const [showControl, setShowControl] = useState(false);
-  let userFind = Users.find((user) => userPassword === user.password && (user.gmail === userName || user.userName === userName));
-  const findMessages = Messages.filter((message) => message.for.toLowerCase() === userFind.userName.toLowerCase());
+  const { userName, userPassword } = useContext(UserContext);
+  const { setShowSideBar } = useContext(ShowSideBarContext);
+
+  const showHamburgerHandler = () => {
+    setShowSideBar((prevState) => (prevState = !prevState));
+  };
+
+  let userFind = Users.find(
+    (user) =>
+      userPassword === user.password &&
+      (user.gmail === userName || user.userName === userName)
+  );
+
+  const findMessages = Messages.filter(
+    (message) => message.for.toLowerCase() === userFind.userName.toLowerCase()
+  );
 
   const userControlHandler = () => {
     setShowControl((prevState) => (prevState = !prevState));
@@ -20,7 +38,13 @@ export default function TopBar() {
     <>
       <div className="flex justify-between p-3 items-center shadow-sm shadow-black">
         <div>
-          <h1 className="font-extrabold text-xl md:text-2xl text-gray-600">articom.ir</h1>
+          <h1 className="hidden sm:block font-extrabold text-xl md:text-2xl text-gray-600">
+            articom.ir
+          </h1>
+          <Bars3Icon
+            className="block sm:hidden w-6"
+            onClick={showHamburgerHandler}
+          />
         </div>
         <div className="flex justify-evenly items-center">
           <div className="relative group cursor-default">
