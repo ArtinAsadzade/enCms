@@ -1,4 +1,4 @@
-import { PlusIcon, PencilSquareIcon } from "@heroicons/react/24/outline";
+import { PlusIcon } from "@heroicons/react/24/outline";
 import ProductsItem from "../components/ProductsItem";
 import { productsData } from "../data/ProductsData";
 import { useState } from "react";
