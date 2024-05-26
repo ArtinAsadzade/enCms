@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import Feedback from "./pages/Feedback";
 import Message from "./pages/Message";
 import Manage from "./pages/Manage";
+import NewProduct from "./components/NewProduct";
 
 const routers = [
   { path: "/", element: <Login /> },
@@ -21,7 +22,13 @@ const routers = [
       { path: "home", element: <Home /> },
       { path: "users", element: <Users /> },
       { path: "newUser", element: <NewUser /> },
-      { path: "products", element: <Products /> },
+      {
+        path: "products",
+        children: [
+          { path: "", element: <Products /> },
+          { path: "newProduct", element: <NewProduct /> },
+        ],
+      },
       { path: "transactions", element: <Transactions /> },
       { path: "reports", element: <Reports /> },
       { path: "mail", element: <Mail /> },
