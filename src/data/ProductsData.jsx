@@ -1,7 +1,8 @@
 export const productsData = [
   {
     id: 1,
-    name: "گوشی شیامی",
+    name: "Iphone 12",
+    desc: "Sleek and powerful smartphone with advanced features and a beautiful design.",
     price: 2000000,
     offerPrice: 1800000,
     count: 9,
@@ -9,7 +10,8 @@ export const productsData = [
   },
   {
     id: 2,
-    name: "لپتاپ ایسوس",
+    name: "Asus Laptop",
+    desc: "High-performance laptop with a quality display, perfect for professional users.",
     price: 12000000,
     offerPrice: 11500000,
     count: 35,
@@ -17,7 +19,8 @@ export const productsData = [
   },
   {
     id: 3,
-    name: "تلویزیون سامسونگ",
+    name: "Samsung Tv",
+    desc: "Clear and immersive television with excellent picture and sound quality.",
     price: 45000000,
     offerPrice: 43300000,
     count: 11,
@@ -25,7 +28,8 @@ export const productsData = [
   },
   {
     id: 4,
-    name: "ایرپاد",
+    name: "Airpods",
+    desc: "Wireless earbuds with superior sound quality and a stylish design.",
     price: 3500000,
     offerPrice: 3200000,
     count: 2,
@@ -33,7 +37,8 @@ export const productsData = [
   },
   {
     id: 5,
-    name: "ریش تراش",
+    name: "Shaver",
+    desc: "Compact and efficient device for hair and beard trimming.",
     price: 1200000,
     offerPrice: 1150000,
     count: 30,
@@ -41,14 +46,16 @@ export const productsData = [
   },
   {
     id: 6,
-    name: "کاپشن",
+    name: "Jacket",
+    desc: "Warm and modern coat for cold weather.",
     price: 150000,
     count: 1,
     img: "/images/kap.jpg",
   },
   {
     id: 7,
-    name: "ساعت",
+    name: "Watch",
+    desc: "Stylish wristwatch with various features.",
     price: 500000,
     offerPrice: 450000,
     count: 20,
