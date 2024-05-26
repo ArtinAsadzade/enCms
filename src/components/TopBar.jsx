@@ -42,7 +42,7 @@ export default function TopBar() {
             articom.ir
           </h1>
           <Bars3Icon
-            className="block sm:hidden w-6"
+            className="block sm:hidden w-6 cursor-pointer"
             onClick={showHamburgerHandler}
           />
         </div>
