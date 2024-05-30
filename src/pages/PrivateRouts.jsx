@@ -26,7 +26,11 @@ export default function PrivateRouts() {
           <TopBar />{" "}
           <div className="flex mt-[2px]">
             <SideBar /> <Outlet />
-            <YesOrNo title={"aa"} desc={``} func={logOutHandler} />
+            <YesOrNo
+              title={"Log Out!"}
+              desc={`Are You Sure For Log Out?`}
+              func={logOutHandler}
+            />
           </div>
         </>
       ) : (
