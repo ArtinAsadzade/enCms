@@ -1,9 +1,6 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function SideBarItems(props) {
-  let location = useLocation();
-  console.log(location);
-
   return (
     <div className="w-full flex flex-col p-2">
       <p className="text-gray-600 font-bold text-sm">{props.title}</p>
