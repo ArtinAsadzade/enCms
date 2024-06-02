@@ -13,15 +13,25 @@ export default function Products() {
         <h1 className="font-bold border-b-2">Manage Products</h1>
         <Link
           to={"/products/newProduct"}
-          className="px-2 py-1 bg-green-600 mx-3 rounded-sm flex items-center font-bold"
+          className="p-2 bg-blue-500 mx-3 rounded-lg flex text-white items-center justify-center"
         >
-          <PlusIcon className="w-5 mx-1" /> Add
+          Add User
+          <PlusIcon className="font-bold w-5 mx-1" />
         </Link>
       </div>
-      <div className="w-full m-auto rounded-lg my-5">
-        {products.map((item) => (
-          <ProductsItem key={item.id} {...item} />
-        ))}
+      <div className="w-full m-auto my-10 rounded-lg">
+        <div className="w-full shadow-md rounded-lg grid grid-cols-12 justify-items-center font-bold text-[#7d889e] bg-gray-200 border-b-2 px-10 py-2">
+          <div className="col-span-3 justify-start w-full flex">Image</div>
+          <div className="col-span-3">Name</div>
+          <div className="col-span-3">Price</div>
+          <div className="col-span-3 justify-end w-full flex">Action</div>
+        </div>
+
+        <div>
+          {products.map((item) => (
+            <ProductsItem key={item.id} {...item} />
+          ))}
+        </div>
       </div>
       <Outlet />
     </div>
