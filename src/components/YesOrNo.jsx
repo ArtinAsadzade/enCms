@@ -13,7 +13,7 @@ export default function YesOrNo({ title, desc, func }) {
 
   return (
     <div
-      className={`w-full z-50 fixed top-10 right-1/2 left-1/2 -translate-x-1/2 tra max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow-lg border-2  ${
+      className={`w-full z-50 fixed top-15 right-1/2 left-1/2 -translate-x-1/2 tra max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow-lg border-2  ${
         show ? "block" : "hidden"
       }`}
       role="alert"
@@ -27,7 +27,7 @@ export default function YesOrNo({ title, desc, func }) {
           <div className="grid grid-cols-2 w-full gap-2">
             <div>
               <button
-                className="inline-flex justify-center w-full px-2 py-1.5 text-xs font-medium text-center text-white bg-green-600 rounded-lg hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 "
+                className="inline-flex justify-center w-full px-2 py-1.5 text-xs font-medium text-center text-white bg-black rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-700"
                 onClick={handleClick}
               >
                 Yes
