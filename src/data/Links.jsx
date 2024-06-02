@@ -1,8 +1,6 @@
 import {
-  ArrowTrendingUpIcon,
   BuildingStorefrontIcon,
   ChatBubbleOvalLeftEllipsisIcon,
-  CurrencyDollarIcon,
   EnvelopeIcon,
   ExclamationCircleIcon,
   HomeIcon,
@@ -37,23 +35,9 @@ export const links = [
       },
       {
         id: 2,
-        name: "New User",
-        link: "newUser",
-        icon: <UserIcon />,
-        category: "quickmenu",
-      },
-      {
-        id: 3,
         name: "Products",
         link: "products",
         icon: <BuildingStorefrontIcon />,
-        category: "quickmenu",
-      },
-      {
-        id: 4,
-        name: "Transactions",
-        link: "transactions",
-        icon: <CurrencyDollarIcon />,
         category: "quickmenu",
       },
     ],
@@ -98,13 +82,6 @@ export const links = [
       },
       {
         id: 2,
-        name: "Analytics",
-        link: "analytics",
-        icon: <ArrowTrendingUpIcon />,
-        category: "staff",
-      },
-      {
-        id: 3,
         name: "Reports",
         link: "reports",
         icon: <ExclamationCircleIcon />,
