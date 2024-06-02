@@ -1,6 +1,6 @@
 import Home from "./pages/Home";
 import Users from "./pages/Users";
-import NewUser from "./pages/NewUser";
+import NewUser from "./components/NewUser";
 import Products from "./pages/Products";
 import Transactions from "./pages/Transactions";
 import Reports from "./pages/Reports";
@@ -20,8 +20,13 @@ const routers = [
     element: <PrivateRouts />,
     children: [
       { path: "home", element: <Home /> },
-      { path: "users", element: <Users /> },
-      { path: "newUser", element: <NewUser /> },
+      {
+        path: "users",
+        children: [
+          { path: "", element: <Users /> },
+          { path: "newUser", element: <NewUser /> },
+        ],
+      },
       {
         path: "products",
         children: [
