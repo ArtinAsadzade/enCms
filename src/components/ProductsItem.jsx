@@ -1,24 +1,28 @@
-import { PencilSquareIcon, MinusIcon } from "@heroicons/react/24/outline";
+import { PencilSquareIcon, TrashIcon } from "@heroicons/react/24/outline";
 
 export default function ProductsItem(props) {
   return (
-    <div className="w-full grid grid-cols-4 items-center  my-5 rounded-lg shadow-lg bg-white p-2">
-      <img src={props.img} alt="" className="w-1/7 h-20 object-cover m-auto" />
-      <div className="text-center m-auto">
+    <div className="w-full grid grid-cols-12 border-b-2 bg-white px-8 py-2 my-2 rounded-md">
+      <img
+        src={props.img}
+        alt=""
+        className="w-1/7 h-20 text-left col-span-3 object-cover"
+      />
+      <div className="m-auto col-span-3 text-center w-full">
         <p className="font-bold">{props.name}</p>
       </div>
-      <div className="text-center m-auto">
-        <p className="font-bold">{props.price}</p>
+      <div className="w-1/4 m-auto px-2 py-1 rounded-lg col-span-3">
+        <p className="font-bold text-black">{props.price}</p>
         {!!props.offerPrice && (
-          <p className="text-red-500">{props.offerPrice}</p>
+          <p className="text-gray-400">{props.offerPrice}</p>
         )}
       </div>
-      <div className="text-black m-auto">
-        <button className="bg-yellow-400 mx-3 my-2 rounded-sm flex items-center p-[2px] justify-center font-bold">
-          <PencilSquareIcon className="w-5 mx-1" />
+      <div className="text-black flex col-span-3 w-full justify-end">
+        <button className="mx-2 my-2 rounded-sm text-lg text-gray-500 flex items-center p-[2px] justify-center font-bold">
+          <PencilSquareIcon className="w-5" />
         </button>
-        <button className="bg-red-600 mx-3 my-2 rounded-sm flex items-center p-[2px] justify-center font-bold">
-          <MinusIcon className="w-5 mx-1" />
+        <button className="mx-2 my-2 rounded-sm text-lg text-gray-500 flex items-center p-[2px] justify-center font-bold">
+          <TrashIcon className="w-5" />
         </button>
       </div>
     </div>

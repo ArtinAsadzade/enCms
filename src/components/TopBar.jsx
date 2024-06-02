@@ -3,7 +3,7 @@ import {
   ArrowLeftStartOnRectangleIcon,
   Bars3Icon,
 } from "@heroicons/react/24/outline";
-import Users from "../data/Users";
+import UsersData from "../data/UsersData";
 import { UserContext } from "../context/UserContext";
 import { ShowSideBarContext } from "./../context/ShowSideBarContext";
 import { ShowYesOrNoContext } from "../context/ShowYesOrNoContext";
@@ -21,7 +21,7 @@ export default function TopBar() {
     setShow((prevState) => (prevState = !prevState));
   };
 
-  let userFind = Users.find(
+  let userFind = UsersData.find(
     (user) =>
       userPassword === user.password &&
       (user.gmail === userName || user.userName === userName)
