@@ -1,6 +1,12 @@
 import { PencilSquareIcon, TrashIcon } from "@heroicons/react/24/outline";
+import { useContext } from "react";
+import { ProductDataContext } from "../context/ProductDataContext";
 
 export default function ProductsItem(props) {
+  const { products, setProducts } = useContext(ProductDataContext);
+  const deleteProductHandler = () => {
+    setProducts(products.filter((item) => item.id !== props.id));
+  };
   return (
     <div className="w-full grid grid-cols-12 border-b-2 bg-white px-8 py-2 my-2 rounded-md">
       <img
@@ -22,7 +28,7 @@ export default function ProductsItem(props) {
           <PencilSquareIcon className="w-5" />
         </button>
         <button className="mx-2 my-2 rounded-sm text-lg text-gray-500 flex items-center p-[2px] justify-center font-bold">
-          <TrashIcon className="w-5" />
+          <TrashIcon className="w-5" onClick={deleteProductHandler} />
         </button>
       </div>
     </div>
