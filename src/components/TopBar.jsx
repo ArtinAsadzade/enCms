@@ -3,15 +3,14 @@ import {
   ArrowLeftStartOnRectangleIcon,
   Bars3Icon,
 } from "@heroicons/react/24/outline";
-import UsersData from "../data/UsersData";
-import { UserContext } from "../context/UserContext";
 import { ShowSideBarContext } from "./../context/ShowSideBarContext";
 import { ShowYesOrNoContext } from "../context/ShowYesOrNoContext";
+import { UserAccContext } from "../context/UserAccContext";
 
 export default function TopBar() {
-  const { userName, userPassword } = useContext(UserContext);
   const { setShowSideBar } = useContext(ShowSideBarContext);
   const { setShow } = useContext(ShowYesOrNoContext);
+  const { userFind } = useContext(UserAccContext);
 
   const showHamburgerHandler = () => {
     setShowSideBar((prevState) => (prevState = !prevState));
@@ -20,12 +19,6 @@ export default function TopBar() {
   const showLogOutMsg = () => {
     setShow((prevState) => (prevState = !prevState));
   };
-
-  let userFind = UsersData.find(
-    (user) =>
-      userPassword === user.password &&
-      (user.gmail === userName || user.userName === userName)
-  );
 
   return (
     <>
