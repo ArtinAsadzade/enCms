@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ShowYesOrNoContext } from "../context/ShowYesOrNoContext";
 
-export default function YesOrNo({ title, desc, func }) {
+export default function YesOrNo({ title, desc, func, button }) {
   const { show, setShow } = useContext(ShowYesOrNoContext);
 
   const handleClick = () => {
@@ -24,24 +24,28 @@ export default function YesOrNo({ title, desc, func }) {
             {title}
           </span>
           <div className="mb-2 text-sm font-normal">{desc}</div>
-          <div className="grid grid-cols-2 w-full gap-2">
-            <div>
-              <button
-                className="inline-flex justify-center w-full px-2 py-1.5 text-xs font-medium text-center text-white bg-black rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-700"
-                onClick={handleClick}
-              >
-                Yes
-              </button>
+          {button ? (
+            <div className="grid grid-cols-2 w-full gap-2">
+              <div>
+                <button
+                  className="inline-flex justify-center w-full px-2 py-1.5 text-xs font-medium text-center text-white bg-black rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-700"
+                  onClick={handleClick}
+                >
+                  Yes
+                </button>
+              </div>
+              <div>
+                <button
+                  className="inline-flex justify-center w-full px-2 py-1.5 text-xs font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200"
+                  onClick={hideQuest}
+                >
+                  No
+                </button>
+              </div>
             </div>
-            <div>
-              <button
-                className="inline-flex justify-center w-full px-2 py-1.5 text-xs font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200"
-                onClick={hideQuest}
-              >
-                No
-              </button>
-            </div>
-          </div>
+          ) : (
+            ""
+          )}
         </div>
         <button
           type="button"
