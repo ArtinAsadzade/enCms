@@ -4,6 +4,8 @@ import UserProvider from "./context/UserContext";
 import ShowSideBarProvider from "./context/ShowSideBarContext";
 import ShowYesOrNoProvider from "./context/ShowYesOrNoContext";
 import UsersDataProvider from "./context/UsersDataContext";
+import UserAccProvider from "./context/UserAccContext";
+import ProductDataProvider from "./context/ProductDataContext";
 
 export default function App() {
   const router = useRoutes(routers);
@@ -12,7 +14,11 @@ export default function App() {
     <UserProvider>
       <ShowYesOrNoProvider>
         <UsersDataProvider>
-          <ShowSideBarProvider>{router}</ShowSideBarProvider>
+          <UserAccProvider>
+            <ProductDataProvider>
+              <ShowSideBarProvider>{router}</ShowSideBarProvider>
+            </ProductDataProvider>
+          </UserAccProvider>
         </UsersDataProvider>
       </ShowYesOrNoProvider>
     </UserProvider>
