@@ -29,6 +29,7 @@ export default function PrivateRouts() {
             <YesOrNo
               title={"Log Out!"}
               desc={`Are You Sure For Log Out?`}
+              button={true}
               func={logOutHandler}
             />
           </div>
