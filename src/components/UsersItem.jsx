@@ -1,6 +1,20 @@
 import { PencilSquareIcon, TrashIcon } from "@heroicons/react/24/outline";
+import { useContext } from "react";
+import { UsersDataContext } from "../context/UsersDataContext";
+import { UserAccContext } from "../context/UserAccContext";
 
 export default function UsersItem(props) {
+  const { userFind } = useContext(UserAccContext);
+  const { Users, setUsers } = useContext(UsersDataContext);
+
+  const deleteUserHandler = () => {
+    if (userFind.id === props.id) {
+      console.log("false");
+    } else {
+      setUsers(Users.filter((item) => item.id !== props.id));
+    }
+  };
+
   return (
     <div className="w-full grid grid-cols-12 border-b-2 bg-white px-8 py-2 my-2 rounded-md">
       <div className="text-left m-auto col-span-4 w-full">
@@ -18,7 +32,10 @@ export default function UsersItem(props) {
         <button className="mx-2 my-2 rounded-sm text-lg flex items-center p-[2px] font-bold">
           <PencilSquareIcon className="w-5" />
         </button>
-        <button className="mx-2 my-2 rounded-sm text-lg flex items-center p-[2px] font-bold">
+        <button
+          className="mx-2 my-2 rounded-sm text-lg flex items-center p-[2px] font-bold"
+          onClick={deleteUserHandler}
+        >
           <TrashIcon className="w-5" />
         </button>
       </div>
