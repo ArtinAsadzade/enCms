@@ -1,14 +1,13 @@
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { Link, Outlet } from "react-router-dom";
-import UsersData from "../data/UsersData";
 import UsersItem from "../components/UsersItem";
+import { useContext } from "react";
+import { UsersDataContext } from "../context/UsersDataContext";
 
 export default function Users() {
-  const 
-
-
+  const { Users } = useContext(UsersDataContext);
   return (
-    <div className="w-full h-svh bg-slate-200 px-5 py-10">
+    <div className="w-full h-full bg-slate-200 px-5 py-10">
       <div className="w-full flex justify-between items-center bg-white m-auto p-3 rounded-lg">
         <h1 className="font-bold border-b-2">Manage Members</h1>
         <Link
@@ -29,7 +28,7 @@ export default function Users() {
         </div>
 
         <div>
-          {UsersData.map((item) => (
+          {Users.map((item) => (
             <UsersItem key={item.id} {...item} />
           ))}
         </div>
