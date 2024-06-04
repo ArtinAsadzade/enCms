@@ -15,7 +15,7 @@ export default function Products() {
           to={"/products/newProduct"}
           className="p-2 bg-blue-500 mx-3 rounded-lg flex text-white items-center justify-center"
         >
-          Add User
+          Add Product
           <PlusIcon className="font-bold w-5 mx-1" />
         </Link>
       </div>
