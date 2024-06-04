@@ -37,6 +37,14 @@ const UsersData = [
     password: "12345",
     gmail: "ali@gmail.com",
     profile: "",
+    admin: false,
+  },
+  {
+    id: 6,
+    userName: "Test User",
+    password: "123",
+    gmail: "ali@gmail.com",
+    profile: "",
     admin: true,
   },
 ];
