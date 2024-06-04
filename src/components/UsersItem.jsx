@@ -23,7 +23,7 @@ export default function UsersItem(props) {
       </div>
       <div className="text-center w-1/4 m-auto bg-blue-500 text-white text px-2 py-1 rounded-lg col-span-4">
         {props.admin ? (
-          <p className="font-bold">admin</p>
+          <p className="font-bold">Admin</p>
         ) : (
           <p className="font-bold">Member</p>
         )}
