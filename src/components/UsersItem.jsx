@@ -9,7 +9,7 @@ export default function UsersItem(props) {
 
   const deleteUserHandler = () => {
     if (userFind.id === props.id) {
-      console.log("false");
+      console.log("You Cant Delet Your Account !!!");
     } else {
       setUsers(Users.filter((item) => item.id !== props.id));
     }
