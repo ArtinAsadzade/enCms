@@ -14,8 +14,8 @@ export default function PrivateRouts() {
   const navigate = useNavigate();
 
   const logOutHandler = () => {
-    navigate("/");
     localStorage.clear();
+    navigate("/");
     setShow((prevState) => (prevState = !prevState));
   };
 
