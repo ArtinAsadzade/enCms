@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 
@@ -6,11 +6,6 @@ export default function Login() {
   const { userName, setUserName, userPassword, setUserPassword } =
     useContext(UserContext);
   const navigate = useNavigate();
-  useEffect(() => {
-    alert(
-      "You Can Use : \n  UserName: artin, Pass: 12345 \n UserName: amir, Pass: 12345 \n UserName: asghar Pass: 12345"
-    );
-  }, []);
 
   const setUserNameHandler = (e) => {
     setUserName(e.target.value);
