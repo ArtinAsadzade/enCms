@@ -7,7 +7,7 @@ import { UsersDataContext } from "../context/UsersDataContext";
 export default function Users() {
   const { Users } = useContext(UsersDataContext);
   return (
-    <div className="w-full h-full bg-slate-200 px-5 py-10">
+    <div className="w-full min-h-svh bg-slate-100 px-5 py-10 overflow-y-hidden">
       <div className="w-full flex justify-between items-center bg-white m-auto p-3 rounded-lg">
         <h1 className="font-bold border-b-2">Manage Members</h1>
         <Link
