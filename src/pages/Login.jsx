@@ -1,8 +1,10 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
+import YesOrNo from "./../components/YesOrNo";
 
 export default function Login() {
+  const [show, setShow] = useState(true);
   const { userName, setUserName, userPassword, setUserPassword } =
     useContext(UserContext);
   const navigate = useNavigate();
@@ -19,8 +21,20 @@ export default function Login() {
     localStorage.setItem("password", userPassword);
     navigate("/home");
   };
+
+  setTimeout(() => {
+    setShow((prevState) => (prevState = !prevState));
+  }, 5000);
+
   return (
     <>
+      <YesOrNo
+        title={`Dont Change Login Value !!!`}
+        desc={`UserName: Test User || Pass: 123`}
+        button={false}
+        show={show}
+        setShow={setShow}
+      />
       <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
