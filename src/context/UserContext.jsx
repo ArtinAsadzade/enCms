@@ -3,9 +3,11 @@ import { createContext, useState } from "react";
 export const UserContext = createContext();
 
 function UserProvider({ children }) {
-  const [userName, setUserName] = useState(localStorage.getItem("userName"));
+  const [userName, setUserName] = useState(
+    localStorage.getItem("userName") || "Test User"
+  );
   const [userPassword, setUserPassword] = useState(
-    localStorage.getItem("password")
+    localStorage.getItem("password") || "123"
   );
 
   return (
