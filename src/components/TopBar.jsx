@@ -38,7 +38,7 @@ export default function TopBar() {
             className="w-5 md:w-8 text-black cursor-pointer mx-2"
           />
           <img
-            src={userFind.profile || "/public/Profile/Default.jpg"}
+            src={userFind.profile || "/Profile/Default.jpg"}
             alt="Profile Pic"
             className="bg-black rounded-full w-8 md:w-10 mx-2 cursor-pointer"
           />
