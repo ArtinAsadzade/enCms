@@ -8,7 +8,7 @@ export default function Products() {
   const { products } = useContext(ProductDataContext);
 
   return (
-    <div className="w-full h-full bg-slate-200 px-5 py-10">
+    <div className="w-full min-h-svh bg-slate-200 px-5 py-10">
       <div className="w-full flex justify-between items-center bg-white m-auto p-3 rounded-lg">
         <h1 className="font-bold border-b-2">Manage Products</h1>
         <Link
