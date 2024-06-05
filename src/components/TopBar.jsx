@@ -1,16 +1,18 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import {
   ArrowLeftStartOnRectangleIcon,
   Bars3Icon,
 } from "@heroicons/react/24/outline";
 import { ShowSideBarContext } from "./../context/ShowSideBarContext";
-import { ShowYesOrNoContext } from "../context/ShowYesOrNoContext";
 import { UserAccContext } from "../context/UserAccContext";
+import YesOrNo from "./YesOrNo";
+import { useNavigate } from "react-router-dom";
 
 export default function TopBar() {
+  const [show, setShow] = useState(false);
   const { setShowSideBar } = useContext(ShowSideBarContext);
-  const { setShow } = useContext(ShowYesOrNoContext);
   const { userFind } = useContext(UserAccContext);
+  const navigate = useNavigate();
 
   const showHamburgerHandler = () => {
     setShowSideBar((prevState) => (prevState = !prevState));
@@ -20,8 +22,22 @@ export default function TopBar() {
     setShow((prevState) => (prevState = !prevState));
   };
 
+  const logOutHandler = () => {
+    localStorage.clear();
+    navigate("/");
+    setShow((prevState) => (prevState = !prevState));
+  };
+
   return (
     <>
+      <YesOrNo
+        title={"Log Out!"}
+        desc={`Are You Sure For Log Out?`}
+        button={true}
+        func={logOutHandler}
+        show={show}
+        setShow={setShow}
+      />
       <div className="flex justify-between p-3 items-center shadow-sm shadow-black">
         <div>
           <h1 className="hidden sm:block font-extrabold text-xl md:text-2xl text-gray-600">
