@@ -4,7 +4,7 @@ const UsersData = [
     userName: "artin",
     password: "12345",
     gmail: "artin@gmail.com",
-    profile: "/Profile/cute alien-amico.svg",
+    profile: "/Profile/artin.jpg",
     admin: true,
   },
   {

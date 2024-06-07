@@ -9,8 +9,6 @@ export default function UsersItem(props) {
   const { userFind } = useContext(UserAccContext);
   const { Users, setUsers } = useContext(UsersDataContext);
 
-  console.log(userFind);
-
   const deleteUserHandler = () => {
     if (userFind.id === props.id) {
       setShow((prevState) => (prevState = !prevState));
@@ -23,11 +21,11 @@ export default function UsersItem(props) {
   const openYesOrNoModal = () => {
     setShow((prevState) => (prevState = !prevState));
   };
-
+  console.log(props);
   return (
     <>
       <YesOrNo
-        title={`You Want Delete *${props.userName}*?`}
+        title={`You Want Delete *${props.username}*?`}
         desc={`Are you sure about deleting the desired product?`}
         button={true}
         func={deleteUserHandler}
@@ -36,20 +34,12 @@ export default function UsersItem(props) {
       />
       <div className="w-full grid grid-cols-12 border-b-2 bg-white px-8 py-2 my-2 rounded-md">
         <div className="text-left m-auto col-span-4 w-full">
-          <p className="font-bold">
-            {props.userName}{" "}
-            <span className="border-b-2 text-blue-500 border-blue-500">
-              {userFind.id === props.id && "Me"}
-            </span>
-          </p>
-          <p className="font-bold text-gray-400">{props.gmail}</p>
+          <p className="font-bold">{props.username}</p>
+          <p className="font-bold text-gray-400">{props.email}</p>
         </div>
-        <div className="text-center w-1/4 m-auto bg-blue-500 text-white text px-2 py-1 rounded-lg col-span-4">
-          {props.admin ? (
-            <p className="font-bold">Admin</p>
-          ) : (
-            <p className="font-bold">Member</p>
-          )}
+        <div className="text-center m-auto col-span-4 w-full">
+          <p className="font-bold">{props.firsname}</p>
+          <p className="font-bold text-gray-400">{props.lastname}</p>
         </div>
         <div className="flex col-span-4 w-full justify-end justify-items-center text-gray-500">
           <button className="mx-2 my-2 rounded-sm text-lg flex items-center p-[2px] font-bold">
