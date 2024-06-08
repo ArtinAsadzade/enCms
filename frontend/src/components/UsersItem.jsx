@@ -21,40 +21,42 @@ export default function UsersItem(props) {
   const openYesOrNoModal = () => {
     setShow((prevState) => (prevState = !prevState));
   };
-  console.log(props);
+
   return (
     <>
       <YesOrNo
-        title={`You Want Delete *${props.username}*?`}
+        title={`You Want Delete *${props?.username}*?`}
         desc={`Are you sure about deleting the desired product?`}
         button={true}
         func={deleteUserHandler}
         show={show}
         setShow={setShow}
       />
-      <div className="w-full grid grid-cols-12 border-b-2 bg-white px-8 py-2 my-2 rounded-md">
-        <div className="text-left m-auto col-span-4 w-full">
-          <p className="font-bold">{props.username}</p>
-          <p className="font-bold text-gray-400">{props.email}</p>
-        </div>
-        <div className="text-center m-auto col-span-4 w-full">
-          <p className="font-bold">{props.firsname}</p>
-          <p className="font-bold text-gray-400">{props.lastname}</p>
-        </div>
-        <div className="flex col-span-4 w-full justify-end justify-items-center text-gray-500">
-          <button className="mx-2 my-2 rounded-sm text-lg flex items-center p-[2px] font-bold">
+      <tr className="odd:bg-gray-200 bg-gray-50 even:bg-gray-100 border-b">
+        <th scope="row" className="px-6 py-4 font-bold text-black">
+          <p className="">{props?.username}</p>
+          <p className="text-gray-400">{props.email}</p>
+        </th>
+        <td className="px-6 py-4 text-black font-bold">
+          <p className="">{props?.firsname}</p>
+          <p className="text-gray-400">{props?.lastname}</p>
+        </td>
+        <td className="px-6 py-4">
+          <button
+            href="#"
+            className="font-medium text-gray-500 mx-2 hover:underline"
+          >
             <PencilSquareIcon className="w-5" />
           </button>
           <button
-            className={`mx-2 my-2 rounded-sm text-lg flex items-center p-[2px] font-bold ${
-              userFind.id === props.id && "opacity-20"
-            }`}
-            onClick={userFind.id !== props.id && openYesOrNoModal}
+            href="#"
+            className="font-medium text-gray-500 mx-2 hover:underline"
+            onClick={userFind?.id !== props?.id && openYesOrNoModal}
           >
             <TrashIcon className="w-5" />
           </button>
-        </div>
-      </div>
+        </td>
+      </tr>
     </>
   );
 }
