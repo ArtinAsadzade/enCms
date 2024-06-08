@@ -1,16 +1,57 @@
-import { PlusIcon } from "@heroicons/react/24/outline";
+import {
+  PencilSquareIcon,
+  PlusIcon,
+  TrashIcon,
+} from "@heroicons/react/24/outline";
 import { Link, Outlet } from "react-router-dom";
-import useApi from "../hook/useApi";
-import FeedbackItems from "../components/FeedbackItems";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import YesOrNo from "../components/YesOrNo";
 
 export default function Feedback() {
-  const [posts, isPending, err] = useApi("comments", "GET");
+  const [show, setShow] = useState(false);
+  const [data, setData] = useState(null);
+  const [isPending, setIsPending] = useState(true);
+  const [err, setErr] = useState(null);
+  const [commentId, setCommentId] = useState(null);
+
+  useEffect(() => {
+    fetchApi();
+  }, [data]);
+
+  function fetchApi() {
+    axios({
+      method: "GET",
+      url: `http://localhost:3000/api/${"comments"}`,
+    })
+      .then((res) => {
+        setData(res.data);
+        setIsPending(false);
+        setErr(null);
+      })
+      .catch((err) => {
+        setErr(err);
+      });
+  }
+
+  const deleteFeedbackHandler = () => {
+    axios({
+      method: "DELETE",
+      url: `http://localhost:3000/api/comments/${commentId}`,
+    }).then(fetchApi());
+    setShow((prevState) => (prevState = !prevState));
+  };
+
+  const openYesOrNoModal = (id) => {
+    setShow((prevState) => (prevState = !prevState));
+    setCommentId(id);
+  };
 
   return (
     <>
       {isPending && <div>Loading ...</div>}
       {err && <div>{err}</div>}
-      {posts && (
+      {data && (
         <div className="w-full min-h-svh bg-slate-100 px-5 py-10 overflow-y-hidden">
           <div className="w-full flex justify-between items-center bg-white m-auto p-3 rounded-lg">
             <h1 className="font-bold border-b-2">Manage Members</h1>
@@ -42,16 +83,53 @@ export default function Feedback() {
                   </tr>
                 </thead>
                 <tbody>
-                  {posts.map((item) => (
-                    <FeedbackItems key={item.id} {...item} />
+                  {data.map((item) => (
+                    <tr
+                      key={item.id}
+                      className="odd:bg-gray-200 bg-gray-50 even:bg-gray-100 border-b"
+                    >
+                      <YesOrNo
+                        title={`You Want Delete *${item?.username}*?`}
+                        desc={`Are you sure about deleting the desired product?`}
+                        button={true}
+                        func={deleteFeedbackHandler}
+                        show={show}
+                        setShow={setShow}
+                      />
+                      <th
+                        scope="row"
+                        className="px-6 py-4 font-bold text-black"
+                      >
+                        <p className="">{item?.userID}</p>
+                        <p className="text-gray-400">{item.productID}</p>
+                      </th>
+                      <td className="px-6 py-4 text-black font-bold">
+                        <p className="">{item?.date}</p>
+                        <p className="text-gray-400">{item?.hour}</p>
+                      </td>
+                      <td className="px-6 py-4 text-black font-bold">
+                        {item.body}
+                      </td>
+                      <td className="px-6 py-4">
+                        <button
+                          href="#"
+                          className="font-medium text-gray-500 mx-2 hover:underline"
+                        >
+                          <PencilSquareIcon className="w-5" />
+                        </button>
+                        <button
+                          href="#"
+                          className="font-medium text-gray-500 mx-2 hover:underline"
+                          onClick={() => openYesOrNoModal(item.id)}
+                        >
+                          <TrashIcon className="w-5" />
+                        </button>
+                      </td>
+                    </tr>
                   ))}
                 </tbody>
               </table>
             </div>
-
-            {/* <div>
-              
-            </div> */}
           </div>
           <Outlet />
         </div>

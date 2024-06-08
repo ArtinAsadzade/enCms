@@ -1,16 +1,34 @@
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { Link, Outlet } from "react-router-dom";
 import UsersItem from "../components/UsersItem";
-import useApi from "../hook/useApi";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function Users() {
-  const [posts, isPending, err] = useApi("users", "GET");
+  const [data, setData] = useState(null);
+  const [isPending, setIsPending] = useState(true);
+  const [err, setErr] = useState(null);
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: `http://localhost:3000/api/${"users"}`,
+    })
+      .then((res) => {
+        setData(res.data);
+        setIsPending(false);
+        setErr(null);
+      })
+      .catch((err) => {
+        setErr(err);
+      });
+  }, [data, isPending, err]);
 
   return (
     <>
       {isPending && <div>Loading ...</div>}
       {err && <div>{err}</div>}
-      {posts && (
+      {data && (
         <div className="w-full min-h-svh bg-slate-100 px-5 py-10 overflow-y-hidden">
           <div className="w-full flex justify-between items-center bg-white m-auto p-3 rounded-lg">
             <h1 className="font-bold border-b-2">Manage Members</h1>
@@ -39,7 +57,7 @@ export default function Users() {
                   </tr>
                 </thead>
                 <tbody>
-                  {posts.map((item) => (
+                  {data.map((item) => (
                     <UsersItem key={item.id} {...item} />
                   ))}
                 </tbody>
