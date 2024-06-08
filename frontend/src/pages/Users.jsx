@@ -4,7 +4,7 @@ import UsersItem from "../components/UsersItem";
 import useApi from "../hook/useApi";
 
 export default function Users() {
-  const [posts, isPending, err] = useApi("user", "GET");
+  const [posts, isPending, err] = useApi("users", "GET");
 
   return (
     <>
@@ -23,21 +23,32 @@ export default function Users() {
             </Link>
           </div>
           <div className="w-full m-auto my-10 rounded-lg">
-            <div className="w-full shadow-md rounded-lg grid grid-cols-12 text-[#7d889e] font-bold bg-gray-200 border-b-2 px-10 py-2">
-              <div className="text-left m-auto col-span-4 w-full">
-                Username / Email
-              </div>
-              <div className="text-center w-1/4 m-auto px-2 py-1 rounded-lg col-span-4">
-                Role
-              </div>
-              <div className="flex col-span-4 w-full justify-end">Action</div>
+            <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+              <table className="w-full text-sm text-left rtl:text-right text-gray-500">
+                <thead className="text-xs text-gray-700 uppercase bg-gray-50">
+                  <tr>
+                    <th scope="col" className="px-6 py-3">
+                      UserName / Email
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      FirstName / LastName
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      Action
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {posts.map((item) => (
+                    <UsersItem key={item.id} {...item} />
+                  ))}
+                </tbody>
+              </table>
             </div>
 
-            <div>
-              {posts.map((item) => (
-                <UsersItem key={item.id} {...item} />
-              ))}
-            </div>
+            {/* <div>
+              
+            </div> */}
           </div>
           <Outlet />
         </div>
