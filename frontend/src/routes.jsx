@@ -12,6 +12,7 @@ import Feedback from "./pages/Feedback";
 import Message from "./pages/Message";
 import Manage from "./pages/Manage";
 import NewProduct from "./components/NewProduct";
+import Admins from "./pages/Admins";
 
 const routers = [
   { path: "/", element: <Login /> },
@@ -24,6 +25,13 @@ const routers = [
         path: "users",
         children: [
           { path: "", element: <Users /> },
+          { path: "newUser", element: <NewUser /> },
+        ],
+      },
+      {
+        path: "admins",
+        children: [
+          { path: "", element: <Admins /> },
           { path: "newUser", element: <NewUser /> },
         ],
       },
