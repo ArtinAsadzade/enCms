@@ -35,6 +35,13 @@ export const links = [
       },
       {
         id: 2,
+        name: "Admins",
+        link: "admins",
+        icon: <UserIcon />,
+        category: "quickmenu",
+      },
+      {
+        id: 3,
         name: "Products",
         link: "products",
         icon: <BuildingStorefrontIcon />,
