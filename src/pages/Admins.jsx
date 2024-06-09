@@ -12,7 +12,7 @@ export default function Users() {
   useEffect(() => {
     axios({
       method: "GET",
-      url: `http://localhost:3000/api/${"admins"}`,
+      url: `https://encms-back.liara.run/api/${"admins"}`,
     })
       .then((res) => {
         setData(res.data);

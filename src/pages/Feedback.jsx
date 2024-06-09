@@ -22,7 +22,7 @@ export default function Feedback() {
   function fetchApi() {
     axios({
       method: "GET",
-      url: `http://localhost:3000/api/${"comments"}`,
+      url: `https://encms-back.liara.run/api/${"comments"}`,
     })
       .then((res) => {
         setData(res.data);
@@ -37,7 +37,7 @@ export default function Feedback() {
   const deleteFeedbackHandler = () => {
     axios({
       method: "DELETE",
-      url: `http://localhost:3000/api/comments/${commentId}`,
+      url: `https://encms-back.liara.run/api/comments/${commentId}`,
     }).then(fetchApi());
     setShow((prevState) => (prevState = !prevState));
   };
