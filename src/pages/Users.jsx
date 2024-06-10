@@ -12,7 +12,7 @@ export default function Users() {
   useEffect(() => {
     axios({
       method: "GET",
-      url: `https://encms-back.liara.run/api/${"users"}`,
+      url: `http://localhost:3000/api/products`,
     })
       .then((res) => {
         if (res.data) {
