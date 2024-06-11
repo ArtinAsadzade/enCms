@@ -3,12 +3,8 @@ import { createContext, useState } from "react";
 export const UserContext = createContext();
 
 function UserProvider({ children }) {
-  const [userName, setUserName] = useState(
-    localStorage.getItem("userName") || "Test User"
-  );
-  const [userPassword, setUserPassword] = useState(
-    localStorage.getItem("password") || "123"
-  );
+  const [userName, setUserName] = useState("" || "Test User");
+  const [userPassword, setUserPassword] = useState("" || "123");
 
   return (
     <UserContext.Provider

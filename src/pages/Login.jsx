@@ -2,11 +2,21 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import YesOrNo from "./../components/YesOrNo";
+import { userLogin } from "./../Utils";
+import { UserAccContext } from "../context/UserAccContext";
+import { useEffect } from "react";
+import UsersData from "../data/UsersData";
+import { productsData } from "../data/ProductsData";
+
+// JSON.parse(localStorage.getItem("user"))
 
 export default function Login() {
   const [show, setShow] = useState(true);
   const { userName, setUserName, userPassword, setUserPassword } =
     useContext(UserContext);
+
+  const { userFind } = useContext(UserAccContext);
+  const isLogin = userLogin(userName, userPassword);
   const navigate = useNavigate();
 
   const setUserNameHandler = (e) => {
@@ -17,10 +27,23 @@ export default function Login() {
   };
 
   const submitHandler = () => {
-    localStorage.setItem("userName", userName);
-    localStorage.setItem("password", userPassword);
-    navigate("/home");
+    if (isLogin) {
+      localStorage.setItem("user", JSON.stringify(userFind));
+      localStorage.setItem("usersData", JSON.stringify(UsersData));
+      localStorage.setItem("productsData", JSON.stringify(productsData));
+      navigate("/home");
+    }
   };
+
+  const formSubmitHandler = (e) => {
+    e.preventDefault();
+  };
+
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem("user"))) {
+      navigate("/home");
+    }
+  }, [JSON.parse(localStorage.getItem("user"))]);
 
   return (
     <>
@@ -39,7 +62,7 @@ export default function Login() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={formSubmitHandler}>
             <div>
               <label
                 htmlFor="email"

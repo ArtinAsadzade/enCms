@@ -1,13 +1,14 @@
 import { createContext, useState } from "react";
-import UsersData from "../data/UsersData";
 
 export const UsersDataContext = createContext();
 
 export default function UsersDataProvider({ children }) {
-  const [Users, setUsers] = useState(UsersData);
+  const [users, setUsers] = useState(
+    JSON.parse(localStorage.getItem("usersData"))
+  );
 
   return (
-    <UsersDataContext.Provider value={{ Users, setUsers }}>
+    <UsersDataContext.Provider value={{ users, setUsers }}>
       {children}
     </UsersDataContext.Provider>
   );

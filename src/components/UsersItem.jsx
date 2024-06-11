@@ -1,22 +1,13 @@
 import { PencilSquareIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { useContext, useState } from "react";
-import { UsersDataContext } from "../context/UsersDataContext";
 import { UserAccContext } from "../context/UserAccContext";
 import YesOrNo from "./YesOrNo";
 
 export default function UsersItem(props) {
   const [show, setShow] = useState(false);
   const { userFind } = useContext(UserAccContext);
-  const { Users, setUsers } = useContext(UsersDataContext);
 
-  const deleteUserHandler = () => {
-    if (userFind.id === props?.id) {
-      setShow((prevState) => (prevState = !prevState));
-    } else {
-      setUsers(Users.filter((item) => item.id !== props?.id));
-      setShow((prevState) => (prevState = !prevState));
-    }
-  };
+  const deleteUserHandler = () => {};
 
   const openYesOrNoModal = () => {
     setShow((prevState) => (prevState = !prevState));
@@ -25,7 +16,7 @@ export default function UsersItem(props) {
   return (
     <>
       <YesOrNo
-        title={`You Want Delete *${props?.username}*?`}
+        title={`You Want Delete *${props?.userName}*?`}
         desc={`Are you sure about deleting the desired product?`}
         button={true}
         func={deleteUserHandler}
@@ -33,15 +24,26 @@ export default function UsersItem(props) {
         setShow={setShow}
       />
       <tr className="odd:bg-gray-200 bg-gray-50 even:bg-gray-100 border-b">
-        <th scope="row" className="px-6 py-4 font-bold text-black">
-          <p className="">{props?.username}</p>
-          <p className="text-gray-400">{props.email}</p>
+        <th
+          scope="row"
+          className="px-6 py-4 font-bold text-black flex text-left"
+        >
+          <img
+            src={props.profile || "/Profile/Default.jpg"}
+            alt=""
+            className="w-10 bg-black rounded-full mr-5"
+          />
+          <div className="flex flex-col">
+            <p className="">{props?.userName}</p>
+            <p className="text-gray-400">{props?.email}</p>
+          </div>
         </th>
-        <td className="px-6 py-4 text-black font-bold">
-          <p className="">{props?.firsname}</p>
-          <p className="text-gray-400">{props?.lastname}</p>
+        <td className="px-6 py-4 text-black font-bold text-center">
+          <button className=" uppercase bg-blue-500 px-3 py-2 rounded-lg">
+            admin
+          </button>
         </td>
-        <td className="px-6 py-4">
+        <td className="px-6 py-4 text-right">
           <button
             href="#"
             className="font-medium text-gray-500 mx-2 hover:underline"

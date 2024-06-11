@@ -1,36 +1,15 @@
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { Link, Outlet } from "react-router-dom";
 import UsersItem from "../components/UsersItem";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useContext } from "react";
+import { UsersDataContext } from "../context/UsersDataContext";
 
 export default function Users() {
-  const [data, setData] = useState(null);
-  const [isPending, setIsPending] = useState(true);
-  const [err, setErr] = useState(null);
-
-  useEffect(() => {
-    axios({
-      method: "GET",
-      url: `http://localhost:3000/api/products`,
-    })
-      .then((res) => {
-        if (res.data) {
-          setData(res?.data);
-        }
-        setIsPending(false);
-        setErr(null);
-      })
-      .catch((err) => {
-        setErr(err);
-      });
-  }, [data, isPending, err]);
+  const { users } = useContext(UsersDataContext);
 
   return (
     <>
-      {isPending && <div>Loading ...</div>}
-      {err && <div>{err}</div>}
-      {data && (
+      {users && (
         <div className="w-full min-h-svh bg-slate-100 px-5 py-10 overflow-y-hidden">
           <div className="w-full flex justify-between items-center bg-white m-auto p-3 rounded-lg">
             <h1 className="font-bold border-b-2">Manage Members</h1>
@@ -44,22 +23,22 @@ export default function Users() {
           </div>
           <div className="w-full m-auto my-10 rounded-lg">
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-              <table className="w-full text-sm text-left rtl:text-right text-gray-500">
+              <table className="w-full text-sm text-gray-500">
                 <thead className="text-xs text-gray-700 uppercase bg-gray-50">
                   <tr>
-                    <th scope="col" className="px-6 py-3">
+                    <th scope="col" className="px-6 py-3 text-left">
                       UserName / Email
                     </th>
-                    <th scope="col" className="px-6 py-3">
-                      FirstName / LastName
+                    <th scope="col" className="px-6 py-3 text-center">
+                      Role
                     </th>
-                    <th scope="col" className="px-6 py-3">
+                    <th scope="col" className="px-6 py-3 text-right">
                       Action
                     </th>
                   </tr>
                 </thead>
                 <tbody>
-                  {data?.map((item) => (
+                  {users?.map((item) => (
                     <UsersItem key={item.id} {...item} />
                   ))}
                 </tbody>
