@@ -9,7 +9,7 @@ export default function useApi(name, method) {
   useEffect(() => {
     axios({
       method: method,
-      url: `http://localhost:3000/api/${name}`,
+      url: `https://encms-back.liara.run/api/${name}`,
     })
       .then((res) => {
         setData(res.data);

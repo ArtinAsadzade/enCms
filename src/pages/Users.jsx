@@ -12,10 +12,12 @@ export default function Users() {
   useEffect(() => {
     axios({
       method: "GET",
-      url: `http://localhost:3000/api/${"users"}`,
+      url: `http://localhost:3000/api/products`,
     })
       .then((res) => {
-        setData(res.data);
+        if (res.data) {
+          setData(res?.data);
+        }
         setIsPending(false);
         setErr(null);
       })
@@ -57,7 +59,7 @@ export default function Users() {
                   </tr>
                 </thead>
                 <tbody>
-                  {data.map((item) => (
+                  {data?.map((item) => (
                     <UsersItem key={item.id} {...item} />
                   ))}
                 </tbody>

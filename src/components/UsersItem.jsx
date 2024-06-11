@@ -10,10 +10,10 @@ export default function UsersItem(props) {
   const { Users, setUsers } = useContext(UsersDataContext);
 
   const deleteUserHandler = () => {
-    if (userFind.id === props.id) {
+    if (userFind.id === props?.id) {
       setShow((prevState) => (prevState = !prevState));
     } else {
-      setUsers(Users.filter((item) => item.id !== props.id));
+      setUsers(Users.filter((item) => item.id !== props?.id));
       setShow((prevState) => (prevState = !prevState));
     }
   };
