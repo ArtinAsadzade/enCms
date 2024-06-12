@@ -43,7 +43,7 @@ export default function Login() {
     if (JSON.parse(localStorage.getItem("user"))) {
       navigate("/home");
     }
-  }, [JSON.parse(localStorage.getItem("user"))]);
+  }, [navigate]);
 
   return (
     <>
