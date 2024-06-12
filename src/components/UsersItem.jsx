@@ -39,8 +39,14 @@ export default function UsersItem(props) {
           </div>
         </th>
         <td className="px-6 py-4 text-black font-bold text-center">
-          <button className=" uppercase bg-blue-500 px-3 py-2 rounded-lg">
-            admin
+          <button className=" uppercase bg-blue-500 px-3 py-2 rounded-lg cursor-default">
+            {props?.perm === 0
+              ? "Member"
+              : props?.perm === 1
+              ? "Admin"
+              : props?.perm === 2
+              ? "Owner"
+              : "Admin"}
           </button>
         </td>
         <td className="px-6 py-4 text-right">
