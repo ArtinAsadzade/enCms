@@ -5,7 +5,7 @@ const UsersData = [
     password: "12345",
     email: "artin@gmail.com",
     profile: "/Profile/artin.jpg",
-    admin: true,
+    perm: 2,
   },
   {
     id: 2,
@@ -13,7 +13,7 @@ const UsersData = [
     password: "12345",
     email: "amir@gmail.com",
     profile: "/Profile/github-250.png",
-    admin: true,
+    perm: 1,
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ const UsersData = [
     password: "12345",
     email: "mamad@gmail.com",
     profile: "",
-    admin: false,
+    perm: 0,
   },
   {
     id: 4,
@@ -29,7 +29,7 @@ const UsersData = [
     password: "12345",
     email: "amir@gmail.com",
     profile: "",
-    admin: true,
+    perm: 1,
   },
   {
     id: 5,
@@ -37,7 +37,7 @@ const UsersData = [
     password: "12345",
     email: "ali@gmail.com",
     profile: "",
-    admin: false,
+    perm: 0,
   },
   {
     id: 6,
@@ -45,7 +45,7 @@ const UsersData = [
     password: "123",
     email: "TestUser@gmail.com",
     profile: "",
-    admin: true,
+    perm: 1,
   },
 ];
 
